@@ -67,13 +67,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LojaVirtualCleiton\LojaVirtualCleiton.csproj">
+    <ProjectReference Include="..\LojaVirtualCleiton\LojaVirtual.csproj">
       <Project>{9022eade-971e-4a40-8e1a-c4bc62ee950b}</Project>
-      <Name>LojaVirtualCleiton</Name>
+      <Name>LojaVirtual</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modelo\Modelo.csproj">
       <Project>{20dbe4b8-45ce-4fd1-a9c8-7ce6574eeb76}</Project>
       <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TesteModelo\TesteSalvarProduto.csproj">
+      <Project>{8627683b-3133-4968-8712-da8f563e0f14}</Project>
+      <Name>TesteSalvarProduto</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

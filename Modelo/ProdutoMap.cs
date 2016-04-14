@@ -1,4 +1,4 @@
-﻿using FluentNHibernate.Mapping; 
+﻿using FluentNHibernate.Mapping;
 
 namespace Modelo
 {
@@ -6,9 +6,10 @@ namespace Modelo
     {
         public ProdutoMap()
         {
-            Id(x => x.Id).GeneratedBy.GuidComb();
+            Id( x =>x.Id).GeneratedBy.GuidComb();
             Map(x => x.Nome);
             References(x => x.Categoria);
+            References(x => x.Fornecedor);
         }
     }
 }

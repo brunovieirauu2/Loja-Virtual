@@ -18,23 +18,48 @@ namespace LojaVirtualCleiton.Controllers
         {
             var produtos = new Produtos();
             var listaProdutos = produtos.Lista();
-            var lista = Mapper.Map<IList<ProdutoViewModel>>(listaProdutos);
+            var lista = Mapper.Map<IList<ProdutoListaViewModel>>(listaProdutos);
             return View(lista);     
             
             
         }
         public ActionResult Editar(Guid? id = null)
         {
+            ProdutoViewModel viewModel;
+
             if (id != null)
             {
                 var produtos = new Produtos();
-                var produto = produtos.Por(id);
-                var viewModel = Mapper.Map<ProdutoViewModel>(produto);
 
-                return View(viewModel);
+                var produto = produtos.Por(id);
+
+                viewModel = Mapper.Map<ProdutoViewModel>(produto);
+
+            } else
+
+            {
+                viewModel = new ProdutoViewModel();
             }
-            return View();
+
+            var categorias = new Categorias();
+
+            var listaCategorias = categorias.Lista();
+
+            viewModel.Categorias = Mapper.Map<IList<CategoriaViewModel>>(listaCategorias);
+          
+           
+
+                var fornecedores = new Fornecedores();
+
+                var listaFornecedores = fornecedores.Lista();
+
+                viewModel.Fornecedores = Mapper.Map<IList<FornecedorViewModel>>(listaFornecedores);
+            
+
+                return View(viewModel);  
+       
         }
+
         [System.Web.Mvc.HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar(ProdutoViewModel viewModel)
@@ -46,12 +71,32 @@ namespace LojaVirtualCleiton.Controllers
                 produtos.Salvar(produto);
                 return RedirectToAction("Lista");
             }
+            var categorias = new Categorias();
+
+            var listaCategorias = categorias.Lista();
+
+            viewModel.Categorias = Mapper.Map<IList<CategoriaViewModel>>(listaCategorias);
+
+            {
+                var fornecedores = new Fornecedores();
+
+                var listaFornecedores = fornecedores.Lista();
+
+                viewModel.Fornecedores = Mapper.Map<IList<FornecedorViewModel>>(listaFornecedores);
+            }
             return View(viewModel);
         }
+
+
+
+
+
         public ActionResult Apagar(Guid id)
         {
             var produtos = new Produtos();
+
             produtos.Apagar(id);
+
             return RedirectToAction("Lista");
         }
     }

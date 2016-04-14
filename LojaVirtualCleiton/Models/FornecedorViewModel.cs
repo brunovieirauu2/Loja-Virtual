@@ -6,14 +6,15 @@ using System.Web;
 
 namespace LojaVirtualCleiton.Models
 {
-    public class CategoriaViewModel
+    public class FornecedorViewModel
     
     {
         public Guid? Id { get; set; }
 
        
         public string Nome { get; set; }
+        public string Endereco { get; set; }
+        public string Cidade { get; set; }
 
-     
     }
 } 

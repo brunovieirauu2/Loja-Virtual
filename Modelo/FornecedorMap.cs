@@ -2,12 +2,14 @@
 
 namespace Modelo
 {
-    public class CategoriaMap: ClassMap<Categoria>
+    public class FornecedorMap: ClassMap<Fornecedor>
     {
-        public CategoriaMap()
+        public FornecedorMap()
         {
             Id(x => x.Id).GeneratedBy.GuidComb();
             Map(x => x.Nome);
+            Map(x => x.Endereco);
+            Map(x => x.Cidade);
         }
     }
 }

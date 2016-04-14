@@ -7,42 +7,42 @@ using System.Threading.Tasks;
 namespace Modelo
 {
 
-    public class Categorias
+    public class Fornecedores
     {
 
 
-        public IList<Categoria> Lista()
+        public IList<Fornecedor> Lista()
         {
             using (var session = NHibernateHelper.OpenSession())
-                return session.QueryOver<Categoria>()
+                return session.QueryOver<Fornecedor>()
                     .List();
         }
 
    
-        public void Salvar(Categoria categoria)
+        public void Salvar(Fornecedor fornecedor)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                session.SaveOrUpdate(categoria);
+                session.SaveOrUpdate(fornecedor);
                 session.Flush();
             }
         }
 
-        public virtual Categoria Por(Guid? id)
+        public virtual Fornecedor Por(Guid? id)
 
         {
             using (var sesion = NHibernateHelper.OpenSession())
             {
-                return sesion.Get<Categoria>(id);
+                return sesion.Get<Fornecedor>(id);
             }
         }
         public virtual void Apagar(Guid id)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                var categoria = session.Get<Categoria>(id);
+                var fornecedor = session.Get<Fornecedor>(id);
 
-                session.Delete(categoria);
+                session.Delete(fornecedor);
 
                 session.Flush();
             }
